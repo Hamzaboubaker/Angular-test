@@ -1,0 +1,68 @@
+ 
+ <div class="col">
+          
+    <h3>form</h3>
+          
+    <form [formGroup]="studentFrom" (ngSubmit)="submit()">
+             
+        <label class="m-3">name:
+                    <input 
+                
+                    type="text"
+                        id="studentName"
+                   
+                        name="studentName" 
+                        formControlName="studentName"
+                    />
+                    <p 
+                        class="text-danger"
+                        *ngIf="studentName.touched && studentName?.errors?.['required']"
+                    >
+                        this field is required
+                    </p>
+               
+                </label>
+                
+                <br>
+               
+                <label class="m-3">email: 
+                  
+                    <input 
+                        type="email" 
+                        id="studentEmail"
+                        name="studentEmail" 
+                        formControlName="studentEmail"
+                    />
+                    <p 
+                        class="text-danger"
+                        *ngIf="studentEmail?.touched && studentEmail?.errors?.['required']"
+                    >
+                        this field is required
+                    </p>
+                    <p 
+                        class="text-danger"
+                        *ngIf="studentEmail?.touched && studentEmail?.errors?.['email']"
+                    >
+                        this field should be a valid email
+                    </p>
+                </label>
+                <label class="m-3">name:
+                    <input 
+                        type="text"
+                        id="studentName"
+                        name="studentName" 
+                        formControlName="studentGender"
+                    />
+                    <p 
+                        class="text-danger"
+                        *ngIf="studentGender.touched && studentGender?.errors?.['required']"
+                    >
+                        this field is required
+                    </p>
+                </label>
+                <br>
+                <button type="submit" [disabled]="!studentFrom.valid">submit</button>
+            </form>
+
+            {{ studentFrom.value | json }}
+        </div>
